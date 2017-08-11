@@ -11,3 +11,10 @@ resource "google_sql_database_instance" "master" {
     }
   }
 }
+
+resource "google_sql_user" "users" {
+  name     = "sql-user"
+  instance = "${google_sql_database_instance.master.name}"
+  host     = "%"
+  password = "sql-password"
+}
