@@ -19,4 +19,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-secrets/
+
+terraform/terraform-gcp.json
+*.tfstate
+*.tfstate.backup
