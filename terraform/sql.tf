@@ -1,5 +1,5 @@
 resource "google_sql_database_instance" "master" {
-  name = "rails-sql"
+  name = "rails-sql2"
   region = "asia-northeast1"
   database_version = "MYSQL_5_6"
   settings {
