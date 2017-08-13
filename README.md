@@ -33,7 +33,7 @@ gcloud container clusters get-credentials rails-cluster
 
 ```
 docker build -t rails-docker .
-docker run -it -d -w /app -v "$PWD:/app" -p 9292:9292 rails-docker
+docker run -it -d --rm -w /app -v "$PWD:/app" -p 9292:9292 --name rails-docker rails-docker
 ```
 
 ## k8s deployment
@@ -42,7 +42,7 @@ docker run -it -d -w /app -v "$PWD:/app" -p 9292:9292 rails-docker
 export PROJECT_ID=rails-docker
 export INSTANCE_CONNECTION_NAME="rails-docker:asia-northeast1:rails-sql3"
 export IMAGE_RAILS="rails"
-export TAG="v4"
+export TAG="v5"
 ```
 
 ```
