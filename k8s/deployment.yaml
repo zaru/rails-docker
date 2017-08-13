@@ -39,7 +39,8 @@ spec:
               mountPath: /etc/ssl/certs
             - name: cloudsql
               mountPath: /cloudsql
-
+        - image: redis:3.2
+          name: redis
       volumes:
         - name: cloudsql-instance-credentials
           secret:
