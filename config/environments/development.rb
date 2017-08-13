@@ -51,4 +51,11 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.active_job.queue_adapter = ActiveJob::GoogleCloudPubsub::Adapter.new(
+    pubsub: Google::Cloud::Pubsub.new(
+      project: "rails-docker", #TODO: replace to environment
+      keyfile: 'terraform/terraform-gcp.json'
+    )
+  )
 end

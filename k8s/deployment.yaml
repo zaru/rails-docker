@@ -40,6 +40,20 @@ spec:
               secretKeyRef:
                 name: cloudsql-db-credentials-password
                 key: password
+        - image: gcr.io/${PROJECT_ID}/${IMAGE_RAILS}:${TAG}
+          name: activejob
+          command: ["bundle", "exec", "activejob-google_cloud_pubsub-worker"]
+          env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: cloudsql-db-credentials
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cloudsql-db-credentials-password
+                key: password
         - image: gcr.io/cloudsql-docker/gce-proxy:1.09
           name: cloudsql-proxy
           command: ["/cloud_sql_proxy", "--dir=/cloudsql",
