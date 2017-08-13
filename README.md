@@ -1,10 +1,26 @@
 # Rails + GKE + Terraform
 
+## Create GKE cluster and CloudSQL instance
+
 ```
-$ cd terraform
-$ terraform plan
-$ terraform apply
+cd terraform
+terraform plan
+terraform apply
 ```
+
+## Set secret keys of CloudSQL
+
+```
+kubectl create secret generic cloudsql-instance-credentials \
+  --from-file=credentials.json=./terraform/terraform-gcp.json
+
+kubectl create secret generic cloudsql-db-credentials \
+  --from-literal=username=sql-user
+kubectl create secret generic cloudsql-db-credentials-password \
+  --from-literal=password=sql-password
+```
+
+## Configure gcloud auth and credentials
 
 ```
 gcloud auth login
@@ -13,20 +29,20 @@ gcloud config set compute/zone asia-northeast1-a
 gcloud container clusters get-credentials rails-cluster
 ```
 
-## Docker
+## Docker build
 
 ```
 docker build -t rails-docker .
 docker run -it -d -w /app -v "$PWD:/app" -p 9292:9292 rails-docker
 ```
 
-## deployment
+## k8s deployment
 
 ```
 export PROJECT_ID=rails-docker
-export INSTANCE_CONNECTION_NAME="rails-docker:asia-northeast1:rails-sql2"
+export INSTANCE_CONNECTION_NAME="rails-docker:asia-northeast1:rails-sql3"
 export IMAGE_RAILS="rails"
-export TAG="v2"
+export TAG="v4"
 ```
 
 ```
