@@ -54,8 +54,9 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = ActiveJob::GoogleCloudPubsub::Adapter.new(
     pubsub: Google::Cloud::Pubsub.new(
-      project: "rails-docker", #TODO: replace to environment
+      project: 1000, #TODO: replace to environment
       keyfile: 'terraform/terraform-gcp.json'
     )
+    # bundle exec activejob-google_cloud_pubsub-worker --project=1000, --keyfile=terraform/terraform-gcp.json
   )
 end
