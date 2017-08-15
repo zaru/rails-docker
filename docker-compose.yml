@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  app:
+    build: .
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: db-user
+      DB_PASSWORD: password
+    depends_on:
+      - db
+    tty: true
+volumes:
+  bundle:
