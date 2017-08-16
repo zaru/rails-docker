@@ -1,0 +1,13 @@
+steps:
+
+- name: gcr.io/cloud-builders/gcloud
+  id: 'A'
+  args: ['echo', 'A']
+- name: gcr.io/cloud-builders/gcloud
+  id: 'B'
+  args: ['echo', 'B']
+  waitFor:
+  - '-'
+- name: gcr.io/cloud-builders/gcloud
+  id: 'C'
+  args: ['echo', 'C']
