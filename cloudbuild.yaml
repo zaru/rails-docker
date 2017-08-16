@@ -28,3 +28,25 @@ steps:
   - |
     echo 'C'
     date
+    sleep 3
+  waitFor:
+  - '-'
+- name: gcr.io/cloud-builders/gcloud
+  id: 'D'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+  echo 'D'
+  date
+  sleep 3
+  waitFor:
+  - '-'
+- name: gcr.io/cloud-builders/gcloud
+  id: 'LAST'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo 'LAST'
+    date
