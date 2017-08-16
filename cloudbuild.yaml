@@ -37,9 +37,9 @@ steps:
   args:
   - '-c'
   - |
-  echo 'D'
-  date
-  sleep 3
+    echo 'D'
+    date
+    sleep 3
   waitFor:
   - '-'
 - name: gcr.io/cloud-builders/gcloud
