@@ -2,12 +2,24 @@ steps:
 
 - name: gcr.io/cloud-builders/gcloud
   id: 'A'
-  args: ['echo', 'A']
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo 'A'
 - name: gcr.io/cloud-builders/gcloud
   id: 'B'
-  args: ['echo', 'B']
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo 'B'
   waitFor:
   - '-'
 - name: gcr.io/cloud-builders/gcloud
   id: 'C'
-  args: ['echo', 'C']
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo 'C'
