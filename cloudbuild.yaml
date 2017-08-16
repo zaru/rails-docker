@@ -7,6 +7,8 @@ steps:
   - '-c'
   - |
     echo 'A'
+    date
+    sleep 3
 - name: gcr.io/cloud-builders/gcloud
   id: 'B'
   entrypoint: 'bash'
@@ -14,6 +16,8 @@ steps:
   - '-c'
   - |
     echo 'B'
+    date
+    sleep 3
   waitFor:
   - '-'
 - name: gcr.io/cloud-builders/gcloud
@@ -23,3 +27,4 @@ steps:
   - '-c'
   - |
     echo 'C'
+    date
