@@ -12,7 +12,7 @@ terraform apply
 
 ```
 kubectl create secret generic cloudsql-instance-credentials \
-  --from-file=credentials.json=./terraform/terraform-gcp.json
+  --from-file=credentials.json=./terraform/sql-client.json
 
 kubectl create secret generic cloudsql-db-credentials \
   --from-literal=username=sql-user
@@ -40,9 +40,9 @@ docker run -it -d --rm -w /app -v "$PWD:/app" -p 9292:9292 --name rails-docker r
 
 ```
 export PROJECT_ID=rails-docker
-export INSTANCE_CONNECTION_NAME="rails-docker:asia-northeast1:rails-sql3"
+export INSTANCE_CONNECTION_NAME="rails-docker:asia-northeast1:rails-sql4"
 export IMAGE_RAILS="rails"
-export TAG="v5"
+export TAG="v10"
 ```
 
 ```

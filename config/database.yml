@@ -15,9 +15,9 @@ default: &default
 
 development:
   <<: *default
-  host: db
-  username: root
-  password: password
+  host: 127.0.0.1
+  username: sql-user
+  password: sql-password
   database: app_development
 
 # Warning: The database defined as "test" will be erased and
